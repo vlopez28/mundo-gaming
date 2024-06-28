@@ -1,0 +1,44 @@
+
+
+<section class="container-games">
+    <h1 class="title-section">Juegos más elegidos</h1>
+
+    <div class="game-list">
+            @for(game of games$ | async; track game.title){
+                <article [ngClass]="getClass(game)">
+                    <figure>
+                        <!-- src = "http://localhost:3001/static/freeFire.jpg" -->
+                    <img class="card-img"  [src] = 'game.image' [alt]='game.title'>
+                    </figure>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <p class="card-title body-bold">{{game.title}}</p>
+                            <div class="card-price">
+                                @if(game.type == 'gratis'){
+                                    <p class="price-off ">${{game.price_normal}}</p>
+                                    <h4 class="price-normal">$0</h4>
+                                }@else if(game.type == 'off'){
+                                    <p class="price-off ">${{game.price_normal}}</p>
+                                    <h4 class="price-normal">${{game.price_off}}</h4>
+                                }
+                                @else{
+                                    <p class="price-off">${{game.price_off}}</p>
+                                    <h4 class="price-normal">${{game.price_normal}}</h4>
+                                }
+                                
+                            </div>
+                        </div>
+                        <p class="card-description tx-small">{{game.description}}
+                        </p>
+                    </div>
+                    <div class="card-btns">
+                        <app-star [game] = "game"></app-star>
+                        <button  [ngClass]="getClassCart(game)" (click)="addCart(game)"></button>
+                    </div>
+                </article>
+            }
+    </div>
+</section>
+
+
+

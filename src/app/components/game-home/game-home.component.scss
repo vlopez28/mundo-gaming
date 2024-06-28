@@ -1,0 +1,30 @@
+.container-games-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px 70px;
+}
+.game-list{
+    margin: 0px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .container-games-cart{
+        margin: 40px 20px;
+    }
+    .game-list{
+        gap: 10px;
+    }
+}
+@media screen and (max-width: 425px) {
+
+    .container-games-cart{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
